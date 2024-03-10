@@ -13,12 +13,19 @@ const inputFeildEl=document.getElementById("input-field")
 const addButtonEl=document.getElementById("add-button")
 const shoppingListEl=document.getElementById("shopping-list")
 
-addButtonEl.addEventListener("click",function(){
-    let inputValue=inputFeildEl.value
-    push(shoppingListInDB,inputValue)
-    clearInputFieldEl()
-   
-})
+addButtonEl.addEventListener("click", function(){
+    let inputValue = inputFeildEl.value.trim(); // Trim leading and trailing spaces
+
+    // Check if input value is not empty
+    if (inputValue !== "") {
+        push(shoppingListInDB, inputValue);
+        clearInputFieldEl();
+    } else {
+        // Alert the user to enter a valid input
+        alert("Should not be Null.");
+    }
+});
+
 
 onValue(shoppingListInDB,function(snapshot){
 
@@ -65,4 +72,3 @@ function appendItemToShoppingEl(item){
 function clearShoppingListEl(){
     shoppingListEl.innerHTML=""
 }
-
